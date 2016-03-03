@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
 let appState = createStore();
+import DebounceInput from 'react-debounce-input';
 
 @observer
 class App extends Component {
@@ -25,8 +26,13 @@ class App extends Component {
     return (
       <div>
         <h1>Coucou</h1>
-        <input ref="SearchInput" type="text" onChange={this.updateSearchText}/>
-        <span>{this.props.searchModel.searchText}</span>
+
+        <DebounceInput
+          minLength={2}
+          debounceTimeout={300}
+          onChange={this.updateSearchText} />
+
+        <span>{appState.searchModel.searchText}</span>
       </div>
     );
   }
