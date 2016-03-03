@@ -30,12 +30,13 @@ class App extends Component {
       <div>
         <h1>Coucou</h1>
 
-        <DebounceInput
-          minLength={2}
-          debounceTimeout={300}
-          onChange={this.updateSearchText} />
+        <input type="text" onChange={this.updateSearchText} />
 
-        <span>{appState.searchModel.searchText}</span>
+        <span>{searchModel.searchText}</span>
+        <p>
+          {searchModel.loading && <span>[> put awesome loading spinner here...]</span>}
+          <span>Number of results : {searchModel.results.length}</span>
+        </p>
       </div>
     );
   }
