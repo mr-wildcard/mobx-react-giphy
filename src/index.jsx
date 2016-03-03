@@ -17,14 +17,16 @@ class App extends Component {
 
   updateSearchText({ target: { value: text } }) {
 
-    const { appState } = this.props;
+    const { searchModel } = this.props.appState;
 
-    appState.searchModel.update(text);
+    searchModel.updateText(text);
   }
 
   render() {
 
-    const { appState } = this.props;
+    const { searchModel } = this.props.appState;
+
+    console.log(searchModel.loading);
 
     return (
       <div>
