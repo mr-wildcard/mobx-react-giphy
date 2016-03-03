@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore } from './store';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
-
-let appState = createStore();
 import DebounceInput from 'react-debounce-input';
 
 @observer
@@ -18,10 +16,15 @@ class App extends Component {
   }
 
   updateSearchText({ target: { value: text } }) {
-    this.props.searchModel.update(text);
+
+    const { appState } = this.props;
+
+    appState.searchModel.update(text);
   }
 
   render() {
+
+    const { appState } = this.props;
 
     return (
       <div>
@@ -38,4 +41,4 @@ class App extends Component {
   }
 }
 
-ReactDOM.render(<App { ...appState } />, document.getElementById('root'));
+ReactDOM.render(<App appState={{ ...createStore() }} />, document.getElementById('root'));
