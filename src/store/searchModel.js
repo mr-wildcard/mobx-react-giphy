@@ -1,13 +1,8 @@
-const appState = new class AppState {
-  @observable timer = 0;
+import { observable } from 'mobx';
 
-  constructor() {
-    setInterval(() => {
-      appState.timer += 1;
-    }, 1000);
-  }
+export default class SearchModel {
 
-  resetTimer() {
-    this.timer = 0;
-  }
-}();
+  @observable searchText = "";
+
+  update = (text) => this.searchText = text
+}

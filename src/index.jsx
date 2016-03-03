@@ -1,40 +1,35 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { observable } from 'mobx';
+import { createStore } from './store';
 import { observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-const appState = new class AppState {
-  @observable timer = 0;
-
-  constructor() {
-    setInterval(() => {
-      appState.timer += 1;
-    }, 1000);
-  }
-
-  resetTimer() {
-    this.timer = 0;
-  }
-}();
+let appState = createStore();
 
 @observer
-class TimerView extends Component {
+class App extends Component {
+
+  constructor() {
+
+    super();
+
+    this.updateSearchText = this.updateSearchText.bind(this);
+  }
+
+  updateSearchText({ target: { value: text } }) {
+    this.props.searchModel.update(text);
+  }
 
   render() {
+
     return (
       <div>
-        <button onClick={this.onReset}>
-          Seconds passed: {this.props.appState.timer}
-        </button>
-        <DevTools />
+        <h1>Coucou</h1>
+        <input ref="SearchInput" type="text" onChange={this.updateSearchText}/>
+        <span>{this.props.searchModel.searchText}</span>
       </div>
     );
   }
+}
 
-  onReset = () => {
-    this.props.appState.resetTimer();
-  }
-};
-
-ReactDOM.render(<TimerView appState={appState}/>, document.getElementById('root'));
+ReactDOM.render(<App { ...appState } />, document.getElementById('root'));

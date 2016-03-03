@@ -1,7 +1,5 @@
-export function createStore() {
+import SearchModel from './searchModel';
 
-  return {
-
-  }
-
-}
+export const createStore = () => ({
+  searchModel: new SearchModel()
+});
