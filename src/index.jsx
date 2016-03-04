@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from './store';
 import { observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
-import DebounceInput from 'react-debounce-input';
+import Item from './components/Item.jsx';
 
 @observer
 class App extends Component {
@@ -16,17 +15,12 @@ class App extends Component {
   }
 
   updateSearchText({ target: { value: text } }) {
-
-    const { searchModel } = this.props.appState;
-
-    searchModel.updateText(text);
+    this.props.appState.searchModel.searchText = text;
   }
 
   render() {
 
     const { searchModel } = this.props.appState;
-
-    console.log(searchModel.loading);
 
     return (
       <div>
@@ -35,10 +29,13 @@ class App extends Component {
         <input type="text" onChange={this.updateSearchText} />
 
         <span>{searchModel.searchText}</span>
+        {searchModel.loading && <p>Loading...</p>}
         <p>
-          {searchModel.loading && <span>[> put awesome loading spinner here...]</span>}
-          <span>Number of results : {searchModel.results.length}</span>
+          <span>Number of results : {searchModel.totalResults}</span>
         </p>
+
+
+        {searchModel.results.map(result => <Item key={result.id} gifSrc={result.images.fixed_height.url} />)}
       </div>
     );
   }

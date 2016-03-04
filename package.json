@@ -36,11 +36,11 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
-    "http-client": "2.1.2",
     "mobx": "^2.0.0",
     "mobx-react": "^3.0.0",
     "mobx-react-devtools": "^4.0.0",
     "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "react-dom": "^0.14.0",
+    "superagent": "1.7.2"
   }
 }

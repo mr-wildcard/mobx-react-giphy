@@ -1,38 +1,43 @@
-import { observable, autorun, autorunAsync } from 'mobx';
-import { createFetch, base, accept, parseJSON } from 'http-client';
+import { observable, autorun, autorunAsync, transaction } from 'mobx';
+import request from 'superagent'
 
 const API_KEY = "dc6zaTOxFJmzC";
 
 class SearchModel {
 
-  constructor() {
-    autorunAsync(() => this.search(this.searchText), 1000);
-  }
-
-  updateText = (text) => this.searchText = text;
-
   @observable searchText = "";
   @observable results = [];
+  @observable totalResults = 0;
   @observable error = null;
   @observable loading = false;
 
-  @observable search = (text) => {
+  constructor() {
 
-    this.error = null;
-    this.loading = true;
+    autorunAsync(() => {
+        this.search(this.searchText)
+      },
+      1000
+    );
+  }
 
-    createFetch( base('http://api.giphy.com/v1/gifs'), accept('application/json'), parseJSON() )
-      (`/search?q=${encodeURIComponent(text)}&api_key=${API_KEY}`)
-        .then(response => {
-          // response.jsonData.data.forEach(gif => this.results.push(gif));
-          this.loading = false;
+  search = (text) => {
 
-          console.log('this.loading:', this.loading);
-        })
-        .catch(error => {
+    // console.log('persisting into local fucking storage !!!');
+    request
+      .get(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(text)}&api_key=${API_KEY}`)
+      .set('Accept', 'application/json')
+      .end((error, { body }) => {
+
+        this.loading = false;
+
+        if (error) {
           this.error = error;
-          this.loading = false;
-        })
+        }
+        else {
+          this.results = body.data;
+          this.totalResults = body.pagination.total_count;
+        }
+      });
   };
 }
 
