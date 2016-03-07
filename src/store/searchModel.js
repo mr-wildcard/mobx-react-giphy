@@ -22,6 +22,8 @@ class SearchModel {
 
   search = (text) => {
 
+    // this.loading = true;
+
     request
       .get(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(text)}&api_key=${API_PUBLIC_KEY}`)
       .query({ limit: 2 })
