@@ -30,7 +30,7 @@ class App extends Component {
         {searchModel.loading && <span>Loading...</span>}
 
         <p>Your currrent search : {searchModel.searchText}</p>
-        
+
         <p>
           <span>Total number of results : {searchModel.totalResults}</span>
         </p>
