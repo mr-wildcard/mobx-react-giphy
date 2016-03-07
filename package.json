@@ -1,4 +1,5 @@
 {
+  "name": "mobx-react-giphy",
   "version": "0.0.1",
   "description": "Giving a try to MobX with Giphy API",
   "main": "server.js",
