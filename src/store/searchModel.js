@@ -22,7 +22,6 @@ class SearchModel {
 
   search = (text) => {
 
-    // console.log('persisting into local fucking storage !!!');
     request
       .get(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(text)}&api_key=${API_PUBLIC_KEY}`)
       .set('Accept', 'application/json')
