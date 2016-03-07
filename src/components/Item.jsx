@@ -11,7 +11,7 @@ class Item extends React.Component {
 
   componentDidMount() {
 
-    request
+    this.request = request
       .get(this.props.gifSrc)
       .on('progress', ({ loaded, total }) => {
         this.setState({
@@ -23,6 +23,10 @@ class Item extends React.Component {
           loaded: true
         })
       });
+  }
+
+  componentWillUnmount() {
+    this.request.abort();
   }
 
   render() {
