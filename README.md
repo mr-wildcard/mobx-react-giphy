@@ -1,10 +1,8 @@
-mobx-react-boilerplate
-=====================
+Ultra simple example with MobX inspired by the [great talk](https://youtu.be/ZVYVtUFDf28) of [Andrew Clark](https://github.com/acdlite)
 
-A minimal application that combines [MobX](https://mobxjs.github.io/mobx) with [React](https://facebook.github.io/react).
-Supports ES6 and JSX compilation through babel.
+[![Andrew Clark - Back to React](clark.jpg)](https://youtu.be/ZVYVtUFDf28)
 
-For a more sophisticated project to start with, see the full TodoMVC implementation: [mobx-react-todomvc](https://github.com/mobxjs/mobx-react-todomvc).
+For a more sophisticated project see the full TodoMVC implementation: [mobx-react-todomvc](https://github.com/mobxjs/mobx-react-todomvc).
 
 ### Run the example
 
