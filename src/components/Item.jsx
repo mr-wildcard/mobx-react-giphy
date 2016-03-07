@@ -16,7 +16,7 @@ class Item extends React.Component {
       .get(this.props.gifSrc)
       .on('progress', ({ loaded, total }) => {
         this.setState({
-          progress: loaded / total * 100
+          progress: Math.ceil(loaded / total * 100)
         });
       })
       .end((error, { text }) => {
