@@ -6,8 +6,7 @@ class Item extends React.Component {
 
   state = {
     loaded: false,
-    progress: 0,
-    requestResponse: ""
+    progress: 0
   };
 
   componentDidMount() {
@@ -20,10 +19,8 @@ class Item extends React.Component {
         });
       })
       .end((error, { text }) => {
-        console.log(text);
         this.setState({
-          loaded: true,
-          requestResponse: "data:image/jpeg;base64," + base64Encode(text)
+          loaded: true
         })
       });
   }
@@ -32,14 +29,13 @@ class Item extends React.Component {
 
     const {
       loaded,
-      progress,
-      requestResponse
+      progress
     } = this.state;
 
     return (
       <div style={{ display: 'inline' }}>
         {!loaded && <span>{progress}</span>}
-        {loaded && <img src={requestResponse} />}
+        {loaded && <img src={this.props.gifSrc} />}
       </div>
     )
   }
