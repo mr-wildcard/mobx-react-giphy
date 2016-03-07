@@ -1,7 +1,7 @@
 import { observable, autorun, autorunAsync, transaction } from 'mobx';
 import request from 'superagent'
 
-const API_KEY = "dc6zaTOxFJmzC";
+const API_PUBLIC_KEY = "dc6zaTOxFJmzC";
 
 class SearchModel {
 
@@ -24,7 +24,7 @@ class SearchModel {
 
     // console.log('persisting into local fucking storage !!!');
     request
-      .get(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(text)}&api_key=${API_KEY}`)
+      .get(`http://api.giphy.com/v1/gifs/search?q=${encodeURIComponent(text)}&api_key=${API_PUBLIC_KEY}`)
       .set('Accept', 'application/json')
       .end((error, { body }) => {
 
