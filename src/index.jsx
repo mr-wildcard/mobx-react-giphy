@@ -27,13 +27,13 @@ class App extends Component {
         <h1>Coucou</h1>
 
         <input type="text" onChange={this.updateSearchText} />
+        {searchModel.loading && <span>Loading...</span>}
 
-        <span>{searchModel.searchText}</span>
-        {searchModel.loading && <p>Loading...</p>}
+        <p>Your currrent search : {searchModel.searchText}</p>
+        
         <p>
-          <span>Number of results : {searchModel.totalResults}</span>
+          <span>Total number of results : {searchModel.totalResults}</span>
         </p>
-
 
         {searchModel.results.map(result => <Item key={result.id} gifSrc={result.images.fixed_height.url} />)}
       </div>
