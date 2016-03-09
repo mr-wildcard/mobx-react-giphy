@@ -1,4 +1,4 @@
-import { observable, autorun, autorunAsync, transaction } from 'mobx';
+import { observable, autorunAsync } from 'mobx';
 import request from 'superagent'
 
 const API_PUBLIC_KEY = "dc6zaTOxFJmzC";
