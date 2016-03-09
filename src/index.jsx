@@ -1,41 +1,19 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from './store';
-import { observer } from 'mobx-react';
-import Item from './components/Item.jsx';
+import Search from './components/Search.jsx';
+import Items from './components/Items.jsx';
 
-@observer
 class App extends Component {
-
-  constructor() {
-
-    super();
-
-    this.updateSearchText = this.updateSearchText.bind(this);
-  }
-
-  updateSearchText({ target: { value: text } }) {
-    this.props.appState.searchModel.searchText = text;
-  }
 
   render() {
 
-    const { searchModel } = this.props.appState;
+    const { appState } = this.props;
 
     return (
       <div>
-        <h1>Coucou</h1>
-
-        <input type="text" onChange={this.updateSearchText} />
-        {searchModel.loading && <span>Loading...</span>}
-
-        <p>Your currrent search : {searchModel.searchText}</p>
-
-        <p>
-          <span>Total number of results : {searchModel.totalResults}</span>
-        </p>
-
-        {searchModel.results.map(result => <Item key={result.id} gifSrc={result.images.fixed_height.url} />)}
+        <Search appState={appState} />
+        <Items appState={appState} />
       </div>
     );
   }

@@ -18,10 +18,15 @@ class Item extends React.Component {
           progress: Math.ceil(loaded / total * 100)
         });
       })
-      .end((error, { text }) => {
-        this.setState({
-          loaded: true
-        })
+      .end(() => {
+        this.setState(
+          {
+            loaded: true
+          },
+          () => {
+            this.props.onLoadHandler();
+          }
+        );
       });
   }
 
@@ -37,7 +42,7 @@ class Item extends React.Component {
     } = this.state;
 
     return (
-      <div style={{ display: 'inline' }}>
+      <div>
         {!loaded && <span>{progress}</span>}
         {loaded && <img src={this.props.gifSrc} />}
       </div>

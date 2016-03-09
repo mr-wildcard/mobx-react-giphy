@@ -1,4 +1,18 @@
+import React from 'react';
+import { observer } from 'mobx-react';
 import Bricks from 'bricks.js/src/bricks';
+import Item from './Item.jsx';
+
+@observer
+class Items extends React.Component {
+
+  constructor() {
+
+    super();
+
+    this.onItemLoadedHandler = this.onItemLoadedHandler.bind(this);
+  }
+
   componentDidMount() {
 
     this.bricks = new Bricks({
@@ -27,5 +41,23 @@ import Bricks from 'bricks.js/src/bricks';
   onItemLoadedHandler() {
     this.packItems();
   }
+
+  render() {
+    
+    const { searchModel: { results: items } } = this.props.appState;
+
+    return (
       <div className="bricks" style={{ position: 'relative', width: 1024, height: 980, margin: '0 auto' }}>
+        {items.map(result => (
+            <Item
+              key={result.id}
+              gifSrc={result.images.fixed_width_still.url}
+              onLoadHandler={this.onItemLoadedHandler}
+            />)
+          )}
       </div>
+    );
+  }
+}
+
+export default Items;
