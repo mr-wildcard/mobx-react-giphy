@@ -17,6 +17,7 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
+    "bricks.js": "1.0.1",
     "mobx": "^2.0.2",
     "mobx-react": "^3.0.1",
     "react": "^0.14.0",
