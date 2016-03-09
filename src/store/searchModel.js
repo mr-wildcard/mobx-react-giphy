@@ -5,7 +5,7 @@ const API_PUBLIC_KEY = "dc6zaTOxFJmzC";
 
 class SearchModel {
 
-  @observable searchText = "";
+  @observable searchText = "paris";
   @observable results = [];
   @observable totalResults = 0;
   @observable error = null;
