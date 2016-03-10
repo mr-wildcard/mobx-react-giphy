@@ -42,8 +42,8 @@ class Item extends React.Component {
     } = this.state;
 
     return (
-      <div>
-        {!loaded && <span>{progress}</span>}
+      <div style={{ width: 200, float: 'left' }}>
+        {!loaded && <p style={{ margin: 0, lineHeight: '200px', textAlign: 'center' }}>{progress}</p>}
         {loaded && <img src={this.props.gifSrc} />}
       </div>
     )
