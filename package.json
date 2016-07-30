@@ -11,16 +11,16 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-1": "^6.3.13",
-    "eslint-plugin-react": "^2.3.0",
-    "react-hot-loader": "^2.0.0-alpha-4",
+    "eslint-plugin-react": "^5.2.2",
+    "react-hot-loader": "^1.3.0",
     "webpack": "^1.9.6",
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
     "mobx": "^2.0.2",
     "mobx-react": "^3.0.1",
-    "react": "15.0.0-rc.1",
-    "react-dom": "^0.14.0",
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
     "superagent": "1.7.2"
   },
   "scripts": {
