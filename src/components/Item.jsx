@@ -9,6 +9,13 @@ class Item extends React.Component {
     progress: 0
   };
 
+  constructor() {
+
+    super();
+
+    this.request = null;
+  }
+
   componentDidMount() {
 
     this.request = request
@@ -31,7 +38,10 @@ class Item extends React.Component {
   }
 
   componentWillUnmount() {
-    this.request.abort();
+
+    if (this.request) {
+      this.request.abort();
+    }
   }
 
   render() {
